@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_LastSelectedProfileId>C:\Users\DarkV\source\repos\StudentApp_Client\StudentApp_Client\Properties\PublishProfiles\ClickOnceProfile.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="forms\outputs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="forms\outputStudentHelper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="forms\regAddEditRemove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="mainform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="forms\aboutme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="forms\amp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="forms\gradesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="forms\InputAmp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="forms\inputGrades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="forms\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="forms\logout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="forms\perm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="forms\reg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="forms\sql.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="forms\ViewGrades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
