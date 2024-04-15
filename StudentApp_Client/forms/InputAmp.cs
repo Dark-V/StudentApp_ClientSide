@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static StudentApp_Client.forms.inputGrades;
+using static StudentApp_Client.forms.ViewGrades;
 
 namespace StudentApp_Client.forms
 {
@@ -188,8 +190,21 @@ namespace StudentApp_Client.forms
 
         public class AttendanceRecord
         {
-            public string date { get; set; }
+            public int Id { get; set; }
+            public double date { get; set; }
             public string status { get; set; }
+            public string FormattedDate
+            {
+                get
+                {
+                    // Create a DateTime object from the Unix timestamp
+                    DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+                    dateTime = dateTime.AddSeconds(this.date).ToLocalTime();
+
+                    // Format the DateTime object to a string in the format "dd.MM.yyyy"
+                    return dateTime.ToString("dd.MM.yyyy");
+                }
+            }
         }
         public async void UpdateGrid()
         {
@@ -231,8 +246,17 @@ namespace StudentApp_Client.forms
                     // Set the data into dataGridView1
                     dataGridView1.DataSource = Attendance;
 
-                    dataGridView1.Columns["date"].HeaderText = "Дата выставления";
+                    // Set the Id column visibility to false after setting the DataSource
+                    dataGridView1.Columns["Id"].Visible = false;
+                    dataGridView1.Columns["date"].Visible = false; // Hide the timestamp column
+
+                    dataGridView1.Columns["FormattedDate"].HeaderText = "Дата выставления";
                     dataGridView1.Columns["status"].HeaderText = "Статус";
+
+                    // Reorder the columns
+                    dataGridView1.Columns["FormattedDate"].DisplayIndex = 0;
+                    dataGridView1.Columns["status"].DisplayIndex = 1;
+                    dataGridView1.Columns["Id"].DisplayIndex = 2;
                 }
             }
             catch (Exception ex)
@@ -263,15 +287,36 @@ namespace StudentApp_Client.forms
 
         private void dateBox_Validating(object sender, CancelEventArgs e)
         {
-           DateTime parsedDate;
-           var isValidDate = DateTime.TryParse(dateBox.Text, out parsedDate);
+            DateTime parsedDate;
+            var isValidDate = DateTime.TryParse(dateBox.Text, out parsedDate);
 
-           if (!isValidDate)
-           {
-               MessageBox.Show("Пожалуйста, введите корректную дату!");
-               e.Cancel = true;
-           }
-         
+            if (!isValidDate)
+            {
+                MessageBox.Show("Пожалуйста, введите корректную дату!");
+                e.Cancel = true;
+            }
+
+        }
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                var selectedRow = dataGridView1.SelectedRows[0];
+                var selectedMark = (AttendanceRecord)selectedRow.DataBoundItem;
+
+                string url = $"http://{Session.ip}:{Session.port}/date/delete?id={selectedMark.Id}";
+                var response = await Session.Client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Посещаемость студента была успешна удалена!");
+                    UpdateGrid(); // Refresh the grid
+                }
+                else
+                {
+                    MessageBox.Show($"Error: {response.StatusCode}");
+                }
+            }
         }
     }
 }

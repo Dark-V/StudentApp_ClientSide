@@ -46,11 +46,10 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Enabled = false;
+            dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
             dataGridView1.Location = new Point(344, 28);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.ScrollBars = ScrollBars.Vertical;
             dataGridView1.Size = new Size(438, 430);
             dataGridView1.TabIndex = 18;
             // 
@@ -126,6 +125,7 @@
             button2.TabIndex = 19;
             button2.Text = "Удалить посещаемость";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // label5
             // 

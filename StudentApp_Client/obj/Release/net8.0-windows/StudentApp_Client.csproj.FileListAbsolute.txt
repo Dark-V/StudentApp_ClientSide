@@ -59,3 +59,8 @@ C:\Users\DarkV\source\repos\StudentApp_Client\StudentApp_Client\bin\Release\net8
 C:\Users\DarkV\source\repos\StudentApp_Client\StudentApp_Client\bin\Release\net8.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
 C:\Users\DarkV\source\repos\StudentApp_Client\StudentApp_Client\bin\Release\net8.0-windows\Microsoft.Extensions.Primitives.dll
 C:\Users\DarkV\source\repos\StudentApp_Client\StudentApp_Client\bin\Release\net8.0-windows\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\DarkV\source\repos\StudentApp_Client\StudentApp_Client\obj\Release\net8.0-windows\StudentApp_Client.sourcelink.json
+C:\Users\DarkV\source\repos\StudentApp_Client\StudentApp_Client\bin\Release\net8.0-windows\StudentApp_Client.dll.manifest
+C:\Users\DarkV\source\repos\StudentApp_Client\StudentApp_Client\bin\Release\net8.0-windows\StudentApp_Client.application
+C:\Users\DarkV\source\repos\StudentApp_Client\StudentApp_Client\obj\Release\net8.0-windows\StudentApp_Client.dll.manifest
+C:\Users\DarkV\source\repos\StudentApp_Client\StudentApp_Client\obj\Release\net8.0-windows\StudentApp_Client.application

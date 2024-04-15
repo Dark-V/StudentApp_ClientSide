@@ -43,11 +43,12 @@ namespace StudentApp_Client
                     break;
                 case "teacher":
                     this.about.Enabled = true;
-                    this.grades.Enabled = true;
-                    this.amp.Enabled = true;
-                    this.gradesForm.Enabled = true;
+                    this.grades.Enabled = false;
+                    this.amp.Enabled = false;
+                    this.gradesForm.Enabled = false;
                     this.inputGrades.Enabled = true;
                     this.inputAmp.Enabled = true;
+                    this.outputs.Enabled = true;
                     break;
                 case "admin":
                     this.about.Enabled = true;
@@ -82,6 +83,7 @@ namespace StudentApp_Client
             this.outputs.Enabled = false;
 
             this.logout.Enabled = false;
+            this.outputs.Enabled = false;
         }
         private void OpenChildForm(Form childForm, object btnSender)
         {

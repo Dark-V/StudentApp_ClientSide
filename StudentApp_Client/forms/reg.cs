@@ -27,7 +27,7 @@ namespace StudentApp_Client.forms
         {
             try
             {
-                regAddEditRemove form = new regAddEditRemove(type, rowData);
+                regAddEditRemove form = new regAddEditRemove(this, type, rowData);
                 form.Show();
             }
             catch (Exception)
@@ -35,7 +35,7 @@ namespace StudentApp_Client.forms
                 throw;
             }
         }
-        private async void LoadGrid()
+        public async void LoadGrid()
         {
             string url = $"http://{Session.ip}:{Session.port}/student/getAll";
 

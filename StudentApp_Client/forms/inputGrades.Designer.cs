@@ -132,7 +132,6 @@
             dataGridView1.Location = new Point(283, 22);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.ScrollBars = ScrollBars.Vertical;
             dataGridView1.Size = new Size(488, 441);
             dataGridView1.TabIndex = 7;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
@@ -173,6 +172,7 @@
             button2.TabIndex = 11;
             button2.Text = "Удалить оценку";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // inputGrades
             // 

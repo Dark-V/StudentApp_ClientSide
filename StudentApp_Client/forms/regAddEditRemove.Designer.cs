@@ -51,8 +51,9 @@
             groupBox3 = new GroupBox();
             label9 = new Label();
             label8 = new Label();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            passBox = new TextBox();
+            loginBox = new TextBox();
+            label10 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -64,9 +65,9 @@
             pictureBox1.ErrorImage = Properties.Resources.user_noimage;
             pictureBox1.Image = Properties.Resources.user_noimage;
             pictureBox1.InitialImage = Properties.Resources.user_noimage;
-            pictureBox1.Location = new Point(12, 21);
+            pictureBox1.Location = new Point(12, 24);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(200, 250);
+            pictureBox1.Size = new Size(200, 257);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
@@ -79,7 +80,7 @@
             button1.TabIndex = 1;
             button1.Text = "error";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button1.Click += button1_Click_1;
             // 
             // label1
             // 
@@ -239,8 +240,8 @@
             // 
             groupBox3.Controls.Add(label9);
             groupBox3.Controls.Add(label8);
-            groupBox3.Controls.Add(textBox2);
-            groupBox3.Controls.Add(textBox1);
+            groupBox3.Controls.Add(passBox);
+            groupBox3.Controls.Add(loginBox);
             groupBox3.Location = new Point(12, 279);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(200, 93);
@@ -266,25 +267,35 @@
             label8.TabIndex = 12;
             label8.Text = "Логин";
             // 
-            // textBox2
+            // passBox
             // 
-            textBox2.Location = new Point(74, 59);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(120, 27);
-            textBox2.TabIndex = 9;
+            passBox.Location = new Point(74, 59);
+            passBox.Name = "passBox";
+            passBox.Size = new Size(120, 27);
+            passBox.TabIndex = 9;
             // 
-            // textBox1
+            // loginBox
             // 
-            textBox1.Location = new Point(74, 26);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(120, 27);
-            textBox1.TabIndex = 9;
+            loginBox.Location = new Point(74, 26);
+            loginBox.Name = "loginBox";
+            loginBox.Size = new Size(120, 27);
+            loginBox.TabIndex = 9;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(571, 14);
+            label10.Name = "label10";
+            label10.Size = new Size(40, 20);
+            label10.TabIndex = 14;
+            label10.Text = "ID: ...";
             // 
             // regAddEditRemove
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(632, 415);
+            Controls.Add(label10);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
@@ -305,6 +316,7 @@
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -331,7 +343,8 @@
         private GroupBox groupBox3;
         private Label label9;
         private Label label8;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox passBox;
+        private TextBox loginBox;
+        private Label label10;
     }
 }

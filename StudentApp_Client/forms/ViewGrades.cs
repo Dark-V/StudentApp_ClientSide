@@ -24,6 +24,7 @@ namespace StudentApp_Client.forms
 
         public class DisplayStudentMark
         {
+            public int Id { get; set; } // Add this line
             public string FormattedDate { get; set; }
             public string discipline_id { get; set; }
             public int mark { get; set; }

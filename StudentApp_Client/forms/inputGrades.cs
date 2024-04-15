@@ -125,8 +125,10 @@ namespace StudentApp_Client.forms
         {
             try
             {
+                var scoreDict = new Dictionary<string, int> { { "5 (отлично)", 5 }, { "4 (хорошо)", 4 }, { "3 (удовлетворительно)", 3 }, { "2 (не удовлетворительно)", 2 }, { "1 (плохо)", 1 }, { "0 (очень плохо)", 0 } };
+                var score = scoreDict[scoreBox.Text].ToString();
+
                 var date = dateBox.Text;
-                var score = scoreBox.Text;
                 var studentId = ((Item)studentsBox.SelectedItem).Id.ToString();
                 var disciplineId = ((Item)dicp.SelectedItem).Id.ToString();
 
@@ -165,6 +167,7 @@ namespace StudentApp_Client.forms
 
         public class Grade
         {
+            public int Id { get; set; } // Add this line
             public long date { get; set; } // Assuming the timestamp is a long
             public string discipline_id { get; set; }
             public int mark { get; set; }
@@ -245,6 +248,7 @@ namespace StudentApp_Client.forms
                     // Convert to display format
                     var displayMarks = grades.Select(m => new DisplayStudentMark
                     {
+                        Id = m.Id,
                         FormattedDate = m.FormattedDate,
                         discipline_id = m.discipline_id,
                         mark = m.mark
@@ -252,11 +256,13 @@ namespace StudentApp_Client.forms
 
                     dataGridView1.DataSource = displayMarks;
 
+                    // Set the Id column visibility to false after setting the DataSource
+                    dataGridView1.Columns["Id"].Visible = false;
+
                     dataGridView1.Columns["FormattedDate"].HeaderText = "Дата выставление";
                     dataGridView1.Columns["discipline_id"].HeaderText = "Предмет";
                     dataGridView1.Columns["mark"].HeaderText = "Оценка";
 
-                    // dataGridView1.Sort(dataGridView1.Columns["FormattedDate"], ListSortDirection.Ascending);
                     dataGridView1.ClearSelection();
                     dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
                     dataGridView1.BorderStyle = BorderStyle.None;
@@ -296,6 +302,27 @@ namespace StudentApp_Client.forms
         private void inputGrades_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                var selectedRow = dataGridView1.SelectedRows[0];
+                var selectedMark = (DisplayStudentMark)selectedRow.DataBoundItem;
+
+                string url = $"http://{Session.ip}:{Session.port}/grade/delete?id={selectedMark.Id}";
+                var response = await Session.Client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Оценка была успешна удалена!");
+                    UpdateGrid(); // Refresh the grid
+                }
+                else
+                {
+                    MessageBox.Show($"Error: {response.StatusCode}");
+                }
+            }
         }
     }
 }
